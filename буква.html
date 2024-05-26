@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номер букви в алфавіті</title>
+    
+<!-- Block added by Adlock: start -->
+<script type="text/javascript" src="//kirill229ut.github.io/adlock/injections/script.js?t=389879176&amp;p=1140654"></script>
+<!-- Block added by Adlock: end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poetsen One';
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        </style>
+</head>
+<body>
+    <h1>Введіть українську букву</h1>
+    <input type="text" id="letterInput" maxlength="1" placeholder="Ваша буква">
+    <button class="button-74" onclick="findLetterPosition()">Знайти номер букви</button>
+    <button class="button-74" onclick="ClearInputs()">Очистити</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function findLetterPosition() {
+            const letter = document.getElementById('letterInput').value;
+            const result = document.getElementById('result');
+            result.innerHTML = ''; 
+
+            if (letter.length === 1) {
+                let alphabetUkr = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя';
+                let lowerLetter = letter.toLowerCase();
+                let position = alphabetUkr.indexOf(lowerLetter) + 1;
+
+                if (position > 0) {
+                    result.innerHTML = `Буква "${letter}" має номер ${position} в українському алфавіті.`;
+                } else {
+                    result.innerHTML = 'Будь ласка, введіть коректну українську букву.';
+                }
+            } else {
+                result.innerHTML = 'Будь ласка, введіть одну букву.';
+            }
+        }
+        function ClearInputs(){
+            document.getElementById('letterInput').value='';
+        }
+    </script>
+</body>
+</html>
